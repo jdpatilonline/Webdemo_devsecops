@@ -21,7 +21,7 @@ pipeline {
 
 	stage ('Deploy-To-Tomcat') {
 	            steps {
-	                sh 'scp target/*.war devsecops-tomcat@192.168.5.156:/prod/apache-tomcat-8.5.39/webapps/webapp.war'
+	                sh 'cp target/*.war /prod/apache-tomcat-8.5.39/webapps/webapp.war'
 	                      
 	                   }     
                                       }
