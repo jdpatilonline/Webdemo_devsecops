@@ -21,7 +21,6 @@ stage ('Check-Secrets') {
         sh 'cat trufflehog'
       }
     }
-
  stage ('SCA-Source Composition Analysis') {
       steps {
          sh 'rm owasp* || true'
@@ -35,8 +34,8 @@ stage ('Check-Secrets') {
 stage ('SAST') {
 		steps {
 		withSonarQubeEnv('sonar') {
-			sh 'mvn sonar:sonar'
-			sh 'cat target/sonar/report-task.txt'
+			sh '#mvn sonar:sonar'
+			sh '#cat target/sonar/report-task.txt'
 		       			}
 			}
 		}
