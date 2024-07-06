@@ -30,7 +30,7 @@ stage ('Check-Git-Secrets') {
 
 	stage ('Deploy-To-Tomcat') {
 	            steps {
-	                sh 'cp target/*.war /prod/apache-tomcat-8.5.39/webapps/webapp.war'
+	                sh 'sudo cp target/*.war /prod/apache-tomcat-8.5.39/webapps/webapp.war'
 	                      
 	                   }     
                                       }
