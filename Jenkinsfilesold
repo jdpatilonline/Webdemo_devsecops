@@ -34,6 +34,7 @@ stage ('Check-Secrets') {
     }
 stage ('SAST') {
 		steps {
+		sh 'whoami'
 		withSonarQubeEnv('sonar') {
 			sh 'mvn sonar:sonar'
 			sh 'cat target/sonar/report-task.txt'
