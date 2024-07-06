@@ -22,7 +22,7 @@ stage ('Check-Secrets') {
       }
     }
 
- stage ('Source Composition Analysis-SCA') {
+ stage ('SCA-Source Composition Analysis') {
       steps {
          sh 'rm owasp* || true'
          sh 'wget "https://raw.githubusercontent.com/jdpatilonline/Webdemo_devsecops/master/owasp-dependency-check.sh" '
@@ -41,7 +41,7 @@ stage ('Check-Secrets') {
 
 	stage ('App Deploy-To-Tomcat') {
 	            steps {
-	                sh 'sudo cp target/*.war /prod/apache-tomcat-8.5.39/webapps/webapp.war'
+	                sh 'sudo scp -i /home/devsecops/.ssh/id_rsa -o StrictHostKeyChecking=no target/*.war devsecops-tomcat@192.168.5.157:/prod/apache-tomcat-8.5.39/webapps/webapp.war'
 	                      
 	                   }     
                                       }
