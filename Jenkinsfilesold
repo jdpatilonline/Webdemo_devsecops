@@ -32,6 +32,15 @@ stage ('Check-Secrets') {
         
       }
     }
+stage ('SAST') {
+		steps {
+		withSonarQubeEnv('sonar') {
+			sh 'pwd'
+			sh 'mvn sonar:sonar'
+			sh 'cat target/sonar/report-task.txt'
+		       			}
+			}
+		}
 
     stage ('Build Running') {
       steps {
